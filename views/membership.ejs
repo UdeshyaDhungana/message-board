@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Membership</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+  <header>
+    <a href="/">MESSAGE-BOARD >_</a>
+  </header>
+  
+  <h1>Get membership</h1>
+
+  <% if(locals.membershipStatus){ %>
+    <div class="flashes">
+      <p class="flash">You already have membership.</p>
+    </div>
+  <% } %>
+
+  <% if(!locals.membershipStatus){ %>
+    <% if(locals.membershipError.length > 0){ %>
+      <!-- Flash messages if membership key is incorrect -->
+      <ul class="flashes">
+        <% for(x of locals.membershipError){ %>
+          <li class="flash"><%= x %></li>
+        <% } %>
+      </ul>
+    <% } %>
+  
+    <form action="/membership" method="POST">
+      <div class="entry">
+        <label for="number">Enter secret number to gain membership: </label>
+        <input type="text" id="number" name="number">
+      </div>
+  
+      <button type="submit">Submit</button>
+    </form>
+  <% } %>
+</body>
+</html>

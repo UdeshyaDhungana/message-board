@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+  <header>
+    <a href="/">MESSAGE-BOARD >_</a>
+  </header>
+  <h1 class="home">Login</h1>
+
+  <% if(Object.keys(locals.signedUp).length > 0){ %>
+    <!-- If message is not empty object the display flash messages -->
+    <!-- Flash messages -->
+    <ul class="flashes">
+      <% for (msg of locals.signedUp){ %>
+        <li class="flash"><%= msg %></li>
+      <% } %>
+    </ul>
+    <!-- Flash messsages -->
+  <% } %>
+
+  <% if(locals.loginError.length > 0){ %>
+    <ul class="flashes">
+      <li class="flash">
+        <%= locals.loginError %>
+      </li>
+    </ul>
+  <% } %>
+
+  <!-- <% %> -->
+
+  <form action="/login" method="POST">
+    <div class="entry">
+      <label for="username">Username: </label>
+      <input type="text" name="username" id="username" autocomplete="off" minlength="5">
+    </div>
+    <div class="entry">
+      <label for="password">Password: </label>
+      <input type="password" name="password" id="password" autocomplete="off" minlength="8">
+    </div>
+
+    <button type="submit">Login</button>
+  </form>
+</body>
+</html>

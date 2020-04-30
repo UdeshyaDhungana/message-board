@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <header><a href="/"><%= title %></a></header>
+  <br>
+  <% if(locals.user){ %>
+    <p class="user">You're logged in as <%= locals.user.firstname+" "+locals.user.lastname %></p>
+  <% } %>
+  <nav>
+    <ul class="links">
+      <% if(locals.user){ %>
+      <li class="link"><a href="/membership">Membership</a></li>
+      <li class="link"><a href="/create">Create_Message</a></li>
+      <li class="link"><a href="/logout">Logout</a></li>
+      <% } %>
+      <% if(!locals.user){ %>
+      <li class="link"><a href="/signup">Create Account</a></li>
+      <li class="link"><a href="/login">Login</a></li>
+      <% } %>
+    </ul>
+  </nav>
+
+  <% if(locals.membership.length > 0){ %>
+  <!-- Flash message if membership succeeds -->
+  <ul class="flashes">
+    <% for (x of locals.membership){ %>
+    <li class="flash"><%= x %></li>
+    <% } %>
+  </ul>
+  <% } %>
+
+  <% if(locals.messageAddition.length > 0){ %>
+    <!-- Flash message if membership succeeds -->
+    <ul class="flashes">
+      <% for (x of locals.messageAddition){ %>
+      <li class="flash"><%= x %></li>
+      <% } %>
+    </ul>
+    <% } %>
+
+  <!-- Messages here -->
+  <% if(locals.messages.length > 0){ %>
+  <section class="messages">
+    <% for(x of locals.messages){ %>
+    <div class="message">
+      <div class="content">
+        <%= x.msg %>
+      </div>
+      <% if (locals.user && locals.user.membership){ %>
+      <div class="author">
+        <%= x.author.firstname+" "+x.author.lastname %>
+      </div>
+      <% } %>
+    </div>
+    <% } %>
+  </section>
+  <% } %>
+
+</body>
+
+</html>

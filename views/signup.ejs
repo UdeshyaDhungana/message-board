@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+  <header>
+    <a href="/">MESSAGE-BOARD >_</a>
+  </header>
+  <h1 class="home">Create new user</h1>
+  <% if (errors) { %>
+    <ul class="flashes">
+      <% for (error of errors) { %>
+        <li class="flash"><%= error.msg %></li>
+      <% } %>
+    </ul>
+  <% } %>
+  <form action="/signup" method="POST">
+    <div class="entry">
+      <label for="firstname">First Name: </label>
+      <input type="text" name="firstname" id="firstname" autocomplete="off" minlength="2">
+      <label for="lastname">Last Name: </label>
+      <input type="text" name="lastname" id="lastname" autocomplete="off" minlength="2">
+    </div>
+
+    <div class="entry">
+      <label for="username">Your new username: </label>
+      <input type="text" name="username" id="username" autocomplete="off" minlength="5">
+    </div>
+    
+    <div class="entry">
+      <label for="password">Password: </label>
+      <input type="password" name="password" id="password" autocomplete="off" minlength="8">
+    </div>
+
+    <div class="entry">
+      <label for="password2">Re-enter Password: </label>
+      <input type="password" name="password2" id="password2" autocomplete="off" minlength="8">
+    </div>
+
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>

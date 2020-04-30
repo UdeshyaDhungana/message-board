@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create new message</title>
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+  <header>
+    <a href="/">MESSAGE-BOARD >_</a>
+  </header>
+  <% if(!locals.membershipStatus){ %>  
+    <div class="flashes">
+      <p class="flash">You don't have membership status. Please obtain it 
+        <a href="/membership">here.</a></p>
+    </div>
+  <% } %>  
+
+  <% if(locals.membershipStatus){ %>
+    <% if (locals.error.length > 0){ %>
+      <!-- Flash message if submission fails -->
+      <ul class="flashes">
+        <li class="flash"><%= locals.error[0] %></li>
+      </ul>
+    <% } %>
+    <form action="/create" method="POST">
+      <div class="entry">
+        <label for="message">Enter your message here: </label>
+        <br>
+        <br>
+        <textarea name="message" id="message" cols="60" rows="15" placeholder="Enter your message!"></textarea>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  <% } %>
+</body>
+</html>
