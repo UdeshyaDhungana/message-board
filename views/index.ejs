@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><%= title %></title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 
 <body>
@@ -50,7 +51,7 @@
     <% for(x of locals.messages){ %>
     <div class="message">
       <div class="content">
-        <%= x.msg %>
+        <%- x.msg %>
       </div>
       <% if (locals.user && locals.user.membership){ %>
       <div class="author">

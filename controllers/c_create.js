@@ -3,8 +3,8 @@ const Message = require('../models/messages');
 const mongoose = require('mongoose');
 
 const validate = [
-  validator.check('message', "Message cannot be empty").trim().notEmpty(),
-  validator.check('message').escape(),
+  validator.body('message', "Message cannot be empty").trim().notEmpty(),
+  validator.body('message').escape(),
 
   (req, res, next) => {
     const errors = validator.validationResult(req);
